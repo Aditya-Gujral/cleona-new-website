@@ -15,7 +15,7 @@ export default function Page() {
   const sectionStyle = {
     fontSize: '3.5em',
     margin: '0 1em',
-    textAlign: 'left',
+    textAlign: 'left' as const,
     color: '#00000',
   };
 
@@ -24,7 +24,7 @@ export default function Page() {
     fontWeight: 'bold',
     color: '#007073',
     margin: '19em 0 1em 1em',
-    textAlign: 'left',
+    textAlign: 'left' as const,
   };
 
 
@@ -32,11 +32,11 @@ export default function Page() {
     fontSize: '3.5em',
     fontWeight: 'bold',
     margin: '0 1em',
-    textAlign: 'left',
+    textAlign: 'left' as const,
   };
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ textAlign: 'center' as const, fontFamily: 'Arial, sans-serif' }}>
       <div><Header /></div>
       <div>
         <VideoPlayer videoSrc={videoUrl} />
@@ -71,7 +71,7 @@ export default function Page() {
         Powers personalized patient engagement across channels, including <br /> web app, patient portal and your website.
       </p>
       <ul style={{ display: 'flex', justifyContent: 'space-around', listStyleType: 'none', padding: '10em 0' }}>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
@@ -86,7 +86,7 @@ export default function Page() {
             Remove access barriers by <br />​providing a 24/7 self-serve <br />​experience
           </p>
         </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
@@ -101,7 +101,7 @@ export default function Page() {
             Deflect calls from the <br /> contact center.
           </p>
         </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
@@ -201,7 +201,7 @@ export default function Page() {
       <p style={sectionStyle}>
         Provide digital, concierge-level experiences for every patient—no matter their language.
       </p>
-      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' }}>
+      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' as const }}>
         Personalize each interaction and communicate with patients in 150 different languages using text or voice.
       </p>
       <Image
@@ -212,15 +212,15 @@ export default function Page() {
         style={{ display: 'block', margin: '1em auto', width: '80%' }}
       />
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em 0 0 1em', color: '#007073' , textAlign: 'left' }}>
+      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em 0 0 1em', color: '#007073' , textAlign: 'left' as const}}>
         Setup
       </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' }}>
+      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const }}>
         Configure in minutes and fully customize for your brand
      
 
       </h3>
-      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left'}}>
+      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' as const}}>
         Customize the look and feel of the Assistant and train it on your organization’s resources through a no-code interface.
       </p>
       <Image
@@ -231,7 +231,7 @@ export default function Page() {
         style={{ display: 'block', margin: '1em auto', width: '80%' }}
       />
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left'}}>
+      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left' as const}}>
         Integrations
       </h2>
       <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' }}>
@@ -241,13 +241,13 @@ export default function Page() {
         Empower patients to schedule appointments, pay bills, receive real-time information, and more without staff intervention.
       </p>
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin:'5em  0 0 1em', color: '#007073' , textAlign: 'left'}}>
+      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin:'5em  0 0 1em', color: '#007073' , textAlign: 'left' as const }}>
         Deployment
       </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' }}>
+      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const }}>
         Embed into your existing website, mobile app, and patient portal
       </h3>
-      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' }}>
+      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' as const }}>
         Enhance your existing channels with conversational AI.
       </p>
       <Image
@@ -258,13 +258,13 @@ export default function Page() {
         style={{ display: 'block', margin: 'auto', width: '80%' }}
       />
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left'}}>
+      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left' as const }}>
         Analytics
       </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' }}>
+      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const}}>
         Uncover exactly what your patients are looking for
       </h3>
-      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6' , textAlign: 'left'}}>
+      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6' , textAlign: 'left' as const}}>
         Build a deeper understanding of the most common questions and use cases for your website, mobile app, and portal.
       </p>
       <Image
