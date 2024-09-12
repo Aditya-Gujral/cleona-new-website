@@ -1,39 +1,29 @@
 import { type DocumentDefinition } from "sanity";
-
-// Define a simplified StructureResolver type
-type StructureResolver = (S: any) => any;
-
-// Define a simplified CreationContext type
-type CreationContext = {
-  type: string;
-};
+import S from "@sanity/desk-tool/structure-builder"; // Adjust import based on your setup
 
 interface NewDocumentOptionsParams {
-  prev: any[]; // Adjust based on actual type
-  creationContext: CreationContext;
+  creationContext: { type: string };
 }
 
-interface ActionsParams {
-  prev: any[]; // Adjust based on actual type
-  schemaType: string;
+interface DocumentTypeListItem {
+  getId: () => string;
 }
 
+// Plugin to handle singletons
 export const singletonPlugin = (types: string[]) => {
   return {
     name: "singletonPlugin",
     document: {
-      // Hide 'Singletons (such as Settings)' from new document options
-      newDocumentOptions: ({ prev, creationContext }: NewDocumentOptionsParams) => {
+      newDocumentOptions: (prev: any[], { creationContext }: NewDocumentOptionsParams) => {
         if (creationContext.type === "global") {
           return prev.filter(
-            templateItem => !types.includes(templateItem.templateId)
+            (templateItem) => !types.includes(templateItem.templateId)
           );
         }
 
         return prev;
       },
-      // Removes the "duplicate" action on the Singletons (such as Home)
-      actions: ({ prev, schemaType }: ActionsParams) => {
+      actions: (prev: any[], { schemaType }: { schemaType: string }) => {
         if (types.includes(schemaType)) {
           return prev.filter(
             ({ action }) =>
@@ -42,46 +32,41 @@ export const singletonPlugin = (types: string[]) => {
         }
 
         return prev;
-      }
-    }
+      },
+    },
   };
 };
 
-// The StructureResolver is how we're changing the DeskTool structure to linking to document (named Singleton)
-// like how "Home" is handled.
+// StructureResolver for desk tool
 export const pageStructure = (
   typeDefArray: DocumentDefinition[]
-): StructureResolver => {
-  return (S: any) => {
-    // Define custom list items and structure
-    const singletonItems = typeDefArray.map(typeDef => {
-      return {
-        title: typeDef.title || "",
-        icon: typeDef.icon,
-        child: {
-          id: typeDef.name,
-          schemaType: typeDef.name,
-          documentId: typeDef.name,
-          views: [
-            // Default form view
-            { type: "form" }
-          ]
-        }
-      };
+): (S: any) => any => {
+  return (S) => {
+    const singletonItems = typeDefArray.map((typeDef) => {
+      return S.listItem()
+        .title(typeDef.title || "")
+        .icon(typeDef.icon)
+        .child(
+          S.editor()
+            .id(typeDef.name)
+            .schemaType(typeDef.name)
+            .documentId(typeDef.name)
+            .views([
+              S.view.form(),
+            ])
+        );
     });
 
-    // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
-      listItem =>
+      (listItem: DocumentTypeListItem) =>
         !typeDefArray.find(
-          singleton => singleton.name === listItem.getId()
+          (singleton) => singleton.name === listItem.getId()
         )
     );
 
-    return {
-      title: "Content",
-      items: [...singletonItems, { type: "divider" }, ...defaultListItems]
-    };
+    return S.list()
+      .title("Content")
+      .items([...singletonItems, S.divider(), ...defaultListItems]);
   };
 };
 
