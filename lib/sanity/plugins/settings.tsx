@@ -1,12 +1,9 @@
-import { type DocumentDefinition } from "sanity";
-import S from "@sanity/desk-tool/structure-builder"; // Adjust import based on your setup
+import type { StructureResolver } from 'sanity/structure';
 
-interface NewDocumentOptionsParams {
-  creationContext: { type: string };
-}
-
-interface DocumentTypeListItem {
-  getId: () => string;
+interface DocumentDefinition {
+  title?: string;
+  icon?: React.ComponentType;
+  name: string;
 }
 
 // Plugin to handle singletons
@@ -14,10 +11,10 @@ export const singletonPlugin = (types: string[]) => {
   return {
     name: "singletonPlugin",
     document: {
-      newDocumentOptions: (prev: any[], { creationContext }: NewDocumentOptionsParams) => {
+      newDocumentOptions: (prev: any[], { creationContext }: { creationContext: { type: string } }) => {
         if (creationContext.type === "global") {
           return prev.filter(
-            (templateItem) => !types.includes(templateItem.templateId)
+            (templateItem: { templateId: string }) => !types.includes(templateItem.templateId)
           );
         }
 
@@ -26,7 +23,7 @@ export const singletonPlugin = (types: string[]) => {
       actions: (prev: any[], { schemaType }: { schemaType: string }) => {
         if (types.includes(schemaType)) {
           return prev.filter(
-            ({ action }) =>
+            ({ action }: { action: string }) =>
               !["unpublish", "delete", "duplicate"].includes(action)
           );
         }
@@ -38,35 +35,12 @@ export const singletonPlugin = (types: string[]) => {
 };
 
 // StructureResolver for desk tool
-export const pageStructure = (
-  typeDefArray: DocumentDefinition[]
-): (S: any) => any => {
-  return (S) => {
-    const singletonItems = typeDefArray.map((typeDef) => {
-      return S.listItem()
-        .title(typeDef.title || "")
-        .icon(typeDef.icon)
-        .child(
-          S.editor()
-            .id(typeDef.name)
-            .schemaType(typeDef.name)
-            .documentId(typeDef.name)
-            .views([
-              S.view.form(),
-            ])
-        );
-    });
-
-    const defaultListItems = S.documentTypeListItems().filter(
-      (listItem: DocumentTypeListItem) =>
-        !typeDefArray.find(
-          (singleton) => singleton.name === listItem.getId()
-        )
-    );
-
-    return S.list()
-      .title("Content")
-      .items([...singletonItems, S.divider(), ...defaultListItems]);
-  };
+export const pageStructure: StructureResolver = (S) => {
+  return S.list()
+    .title('Content')
+    .items([
+      S.documentTypeListItem('lesson').title('Lessons'),
+      // You can add more document type list items here
+    ]);
 };
 
