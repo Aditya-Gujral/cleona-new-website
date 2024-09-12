@@ -12,7 +12,7 @@ export default function Page() {
   const videoUrl = "/vid/CLEONA Reproductive.mp4";
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center' as const }}>
       <Header />
       <div>
         <VideoPlayer videoSrc={videoUrl} />
@@ -87,7 +87,7 @@ export default function Page() {
         Powers personalized patient engagement across channels, including web app, patient portal, and your website.
       </p>
       <ul style={{ display: 'flex', justifyContent: 'space-around', listStyleType: 'none', padding: '10em 0' }}>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
@@ -102,7 +102,7 @@ export default function Page() {
             Remove access barriers by <br /> providing a 24/7 self-serve <br /> experience
           </p>
         </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
@@ -117,7 +117,7 @@ export default function Page() {
             Deflect calls from the <br /> contact center.
           </p>
         </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' }}>
+        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
           <Image
             src="/img/tickmark.png"
             alt="Tick mark"
