@@ -10,7 +10,7 @@ import Header from '@/components/Header';
 
 
 export default function Page() {
-  const videoUrl = "/vid/CLEONA Vid.mp4";
+  const videoUrl = "https://cleona-video.s3.amazonaws.com/CLEONA+Vid.mp4";
 
   const sectionStyle = {
     fontSize: '3.5em',
