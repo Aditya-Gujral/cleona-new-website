@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export default function Page() {
-  const videoUrl = "/vid/CLEONA Reproductive.mp4";
+  const videoUrl = "https://cleona-video.s3.amazonaws.com/CLEONA+Reproductive.mp4";
 
   return (
     <div style={{ textAlign: 'center' as const }}>
