@@ -1,3 +1,4 @@
+import { createClient } from "next-sanity";
 import { apiVersion, dataset, projectId, useCdn } from "./config";
 import {
   postquery,
@@ -15,7 +16,10 @@ import {
   getAll,
   searchquery
 } from "./groq";
-import { createClient } from "next-sanity";
+
+// Define types for query and params
+type Query = string;
+type Params = Record<string, any>; // or a more specific type if you have one
 
 if (!projectId) {
   console.error(
@@ -23,14 +27,11 @@ if (!projectId) {
   );
 }
 
-/**
- * Checks if it's safe to create a client instance, as `@sanity/client` will throw an error if `projectId` is false
- */
 const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null;
 
-export const fetcher = async ([query, params]) => {
+export const fetcher = async ([query, params]: [Query, Params]) => {
   return client ? client.fetch(query, params) : [];
 };
 
@@ -59,7 +60,7 @@ export async function getSettings() {
   return [];
 }
 
-export async function getPostBySlug(slug) {
+export async function getPostBySlug(slug: string) {
   if (client) {
     return (await client.fetch(singlequery, { slug })) || {};
   }
@@ -69,20 +70,21 @@ export async function getPostBySlug(slug) {
 export async function getAllPostsSlugs() {
   if (client) {
     const slugs = (await client.fetch(pathquery)) || [];
-    return slugs.map(slug => ({ slug }));
-  }
-  return [];
-}
-// Author
-export async function getAllAuthorsSlugs() {
-  if (client) {
-    const slugs = (await client.fetch(authorsquery)) || [];
-    return slugs.map(slug => ({ author: slug }));
+    return slugs.map((slug: string) => ({ slug }));
   }
   return [];
 }
 
-export async function getAuthorPostsBySlug(slug) {
+// Author
+export async function getAllAuthorsSlugs() {
+  if (client) {
+    const slugs = (await client.fetch(authorsquery)) || [];
+    return slugs.map((slug: string) => ({ author: slug }));
+  }
+  return [];
+}
+
+export async function getAuthorPostsBySlug(slug: string) {
   if (client) {
     return (await client.fetch(postsbyauthorquery, { slug })) || {};
   }
@@ -97,16 +99,15 @@ export async function getAllAuthors() {
 }
 
 // Category
-
 export async function getAllCategories() {
   if (client) {
     const slugs = (await client.fetch(catpathquery)) || [];
-    return slugs.map(slug => ({ category: slug }));
+    return slugs.map((slug: string) => ({ category: slug }));
   }
   return [];
 }
 
-export async function getPostsByCategory(slug) {
+export async function getPostsByCategory(slug: string) {
   if (client) {
     return (await client.fetch(postsbycatquery, { slug })) || {};
   }
@@ -120,7 +121,7 @@ export async function getTopCategories() {
   return [];
 }
 
-export async function getPaginatedPosts({ limit, pageIndex = 0 }) {
+export async function getPaginatedPosts({ limit, pageIndex = 0 }: { limit: number; pageIndex?: number }) {
   if (client) {
     return (
       (await client.fetch(paginatedquery, {
