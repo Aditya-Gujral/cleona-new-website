@@ -1,0 +1,44 @@
+/* styles.css */
+.container {
+    text-align: center;
+  }
+  
+  .image {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .header {
+    font-size: 5em;
+    font-weight: bold;
+    color: #007073;
+  }
+  
+  .subheader {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #a6a6a6;
+  }
+  
+  .paragraph {
+    font-size: 1em;
+    margin: 1em 0;
+    color: #a6a6a6;
+  }
+  .highlight{
+    font-size: 1em;
+    margin: 1em 0;
+    color: #007073;
+  }
+  .list-item {
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+  
+  .link {
+    font-size: 1em;
+    color: blue;
+    text-decoration: underline;
+  }
+  

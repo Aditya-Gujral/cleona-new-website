@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/landing-page/page": "app/landing-page/page.js",
+  "/about/page": "app/about/page.js",
+  "/insights/(website)/page": "app/insights/(website)/page.js",
+  "/insights/(website)/post/[slug]/page": "app/insights/(website)/post/[slug]/page.js"
+}
