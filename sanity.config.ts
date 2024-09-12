@@ -22,7 +22,7 @@ console.log(projectId);
 export default defineConfig({
   name: 'default',
   title: 'Stablo Template',
-  basePath: '/studio',
+  basePath: '/insights/studio',
   projectId: projectId,
   dataset: dataset,
 
