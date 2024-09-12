@@ -3,10 +3,11 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/Link'
+import Link from 'next/link'; // Corrected import path
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+
 
 export default function Page() {
   const videoUrl = "/vid/CLEONA Vid.mp4";
