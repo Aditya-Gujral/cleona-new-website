@@ -1,7 +1,12 @@
 import React from 'react';
 import './VideoPlayer.css'; // Import a CSS file for styling
 
-const VideoPlayer = ({ videoSrc }) => {
+// Define the type for props
+interface VideoPlayerProps {
+  videoSrc: string; // Specify that videoSrc should be a string
+}
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSrc }) => {
   return (
     <div className="video-container">
       <video autoPlay loop muted className="video-player">
