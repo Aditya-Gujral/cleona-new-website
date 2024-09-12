@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/Link'
+import Link from 'next/link'
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
