@@ -1,20 +1,22 @@
-/**
- * This plugin contains all the logic for setting up the singletons
- */
+import { type DocumentDefinition, type DocumentOptions, type StructureResolver, type CreationContext } from "sanity";
+import S from '@sanity/desk-tool/structure-builder'; // Adjust import based on your setup
 
-// import {
-//   apiVersion,
-//   previewSecretId,
-// } from "@/lib/sanity/config";
-import { type DocumentDefinition } from "sanity";
-import { type StructureResolver } from "sanity/desk";
+interface NewDocumentOptionsParams {
+  prev: DocumentOptions[]; // Adjust based on your actual type
+  creationContext: CreationContext;
+}
+
+interface ActionsParams {
+  prev: Array<{ action: string }>; // Adjust based on your actual type
+  schemaType: string;
+}
 
 export const singletonPlugin = (types: string[]) => {
   return {
     name: "singletonPlugin",
     document: {
       // Hide 'Singletons (such as Settings)' from new document options
-      newDocumentOptions: (prev, { creationContext }) => {
+      newDocumentOptions: ({ prev, creationContext }: NewDocumentOptionsParams) => {
         if (creationContext.type === "global") {
           return prev.filter(
             templateItem => !types.includes(templateItem.templateId)
@@ -24,7 +26,7 @@ export const singletonPlugin = (types: string[]) => {
         return prev;
       },
       // Removes the "duplicate" action on the Singletons (such as Home)
-      actions: (prev, { schemaType }) => {
+      actions: ({ prev, schemaType }: ActionsParams) => {
         if (types.includes(schemaType)) {
           return prev.filter(
             ({ action }) =>
