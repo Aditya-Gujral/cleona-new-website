@@ -1,23 +1,36 @@
 import { defineConfig } from 'sanity';
-import { deskTool } from 'sanity/desk';
-import { pageStructure } from './structure';
+import { deskTool } from 'sanity/desk-tool';
+import { previewDocumentNode } from 'sanity/preview';
 
+// Define your project configuration
+export const useCdn = process.env.NODE_ENV === "production";
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-default-project-id';
+export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-03-25';
+export const previewSecretId = process.env.SANITY_REVALIDATE_SECRET || 'your-default-preview-secret';
+
+// Define your Sanity configuration
 export default defineConfig({
   name: 'default',
   title: 'My Sanity Studio',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-03-25',
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn,
 
   plugins: [
     deskTool({
-      structure: pageStructure,
+      structure: (S) => S.list()
+        .title('Content')
+        .items([
+          S.documentTypeListItem('lesson').title('Lessons'),
+          // Add more items as needed
+        ]),
     }),
-    // Other plugins
+    // Add other plugins as needed
   ],
-  
-  // Optional: Uncomment if you need a defaultDocumentNode
-  // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
+
+  defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
 });
+
