@@ -8,29 +8,32 @@ import {
   ChevronRightIcon
 } from "@heroicons/react/24/outline";
 
+// Define the type for props
+interface PaginationProps {
+  pageIndex: number; // Specify that pageIndex should be a number
+  isFirstPage: boolean; // Specify that isFirstPage should be a boolean
+  isLastPage: boolean; // Specify that isLastPage should be a boolean
+}
+
 export default function Pagination({
   pageIndex,
   isFirstPage,
   isLastPage
-}) {
+}: PaginationProps) {
   const router = useRouter();
-
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
   // Define functions for navigating to the next and previous pages
-  // These functions update the page query parameter in the URL
   const handleNextPage = () => {
     params.set("page", (pageIndex + 1).toString());
     const query = params.toString();
-
     router.push(`/archive?${query}`);
   };
 
   const handlePrevPage = () => {
     params.set("page", (pageIndex - 1).toString());
     const query = params.toString();
-
     router.push(`/archive?${query}`);
   };
 
