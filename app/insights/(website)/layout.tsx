@@ -1,7 +1,7 @@
 import { getSettings } from "@/lib/sanity/client";
 import { urlForImage } from "@/lib/sanity/image";
 import Header from "@/components/HeaderDark";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 
 
