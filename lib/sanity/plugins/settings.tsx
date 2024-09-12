@@ -1,5 +1,6 @@
-import { type DocumentDefinition, type DocumentOptions, type StructureResolver, type CreationContext } from "sanity";
-import S from '@sanity/desk-tool/structure-builder'; // Adjust import based on your setup
+import { type DocumentDefinition } from "sanity";
+import S from '@sanity/desk-tool/structure-builder'; // Import for structure building
+import { type StructureResolver, type CreationContext } from '@sanity/desk-tool/structure-builder'; // Correct import for StructureResolver and CreationContext
 
 interface NewDocumentOptionsParams {
   prev: DocumentOptions[]; // Adjust based on your actual type
@@ -77,3 +78,4 @@ export const pageStructure = (
       .items([...singletonItems, S.divider(), ...defaultListItems]);
   };
 };
+
