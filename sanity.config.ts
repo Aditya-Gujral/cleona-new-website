@@ -1,6 +1,4 @@
-import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
-import { visionTool } from "@sanity/vision";
+import { defineConfig, deskTool, visionTool } from "sanity";
 import { schemaTypes } from "./lib/sanity/schemas";
 import {
   projectId,
@@ -16,6 +14,9 @@ import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { table } from "@sanity/table";
 import { codeInput } from "@sanity/code-input";
 
+// Type assertion for StructureResolver
+type StructureResolver = (S: any) => any;
+
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ["post"];
 console.log(projectId);
 
@@ -28,7 +29,7 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: pageStructure([settings])
+      structure: pageStructure as unknown as StructureResolver, // Type assertion to resolve type issue
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
@@ -43,3 +44,4 @@ export default defineConfig({
     types: schemaTypes
   }
 });
+
