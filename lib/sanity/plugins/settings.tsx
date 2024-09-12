@@ -1,46 +1,79 @@
-import type { StructureResolver } from 'sanity/structure';
+/**
+ * This plugin contains all the logic for setting up the singletons
+ */
 
-interface DocumentDefinition {
-  title?: string;
-  icon?: React.ComponentType;
-  name: string;
-}
+// import {
+//   apiVersion,
+//   previewSecretId,
+// } from "@/lib/sanity/config";
+import { type DocumentDefinition } from "sanity";
+import { type StructureResolver } from "sanity/desk";
 
-// Plugin to handle singletons
 export const singletonPlugin = (types: string[]) => {
   return {
     name: "singletonPlugin",
     document: {
-      newDocumentOptions: (prev: any[], { creationContext }: { creationContext: { type: string } }) => {
+      // Hide 'Singletons (such as Settings)' from new document options
+      newDocumentOptions: (prev, { creationContext }) => {
         if (creationContext.type === "global") {
           return prev.filter(
-            (templateItem: { templateId: string }) => !types.includes(templateItem.templateId)
+            templateItem => !types.includes(templateItem.templateId)
           );
         }
 
         return prev;
       },
-      actions: (prev: any[], { schemaType }: { schemaType: string }) => {
+      // Removes the "duplicate" action on the Singletons (such as Home)
+      actions: (prev, { schemaType }) => {
         if (types.includes(schemaType)) {
           return prev.filter(
-            ({ action }: { action: string }) =>
+            ({ action }) =>
               !["unpublish", "delete", "duplicate"].includes(action)
           );
         }
 
         return prev;
-      },
-    },
+      }
+    }
   };
 };
 
-// StructureResolver for desk tool
-export const pageStructure: StructureResolver = (S) => {
-  return S.list()
-    .title('Content')
-    .items([
-      S.documentTypeListItem('lesson').title('Lessons'),
-      // You can add more document type list items here
-    ]);
+// The StructureResolver is how we're changing the DeskTool structure to linking to document (named Singleton)
+// like how "Home" is handled.
+export const pageStructure = (
+  typeDefArray: DocumentDefinition[]
+): StructureResolver => {
+  return S => {
+    // Goes through all of the singletons that were provided and translates them into something the
+    // Desktool can understand
+    const singletonItems = typeDefArray.map(typeDef => {
+      return S.listItem()
+        .title(typeDef.title || "")
+        .icon(typeDef.icon)
+        .child(
+          S.editor()
+            .id(typeDef.name)
+            .schemaType(typeDef.name)
+            .documentId(typeDef.name)
+            .views([
+              // Default form view
+              S.view.form()
+            ])
+        );
+    });
+
+    // The default root list items (except custom ones)
+    const defaultListItems = S.documentTypeListItems().filter(
+      listItem =>
+        !typeDefArray.find(
+          singleton => singleton.name === listItem.getId()
+        )
+    );
+
+    return S.list()
+      .title("Content")
+      .items([...singletonItems, S.divider(), ...defaultListItems]);
+  };
 };
+
 
