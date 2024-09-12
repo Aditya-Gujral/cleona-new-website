@@ -1,14 +1,20 @@
 import { type DocumentDefinition } from "sanity";
-import S from '@sanity/desk-tool/structure-builder'; // Import for structure building
-import { type StructureResolver, type CreationContext } from '@sanity/desk-tool/structure-builder'; // Correct import for StructureResolver and CreationContext
+
+// Define a simplified StructureResolver type
+type StructureResolver = (S: any) => any;
+
+// Define a simplified CreationContext type
+type CreationContext = {
+  type: string;
+};
 
 interface NewDocumentOptionsParams {
-  prev: DocumentOptions[]; // Adjust based on your actual type
+  prev: any[]; // Adjust based on actual type
   creationContext: CreationContext;
 }
 
 interface ActionsParams {
-  prev: Array<{ action: string }>; // Adjust based on your actual type
+  prev: any[]; // Adjust based on actual type
   schemaType: string;
 }
 
@@ -46,23 +52,22 @@ export const singletonPlugin = (types: string[]) => {
 export const pageStructure = (
   typeDefArray: DocumentDefinition[]
 ): StructureResolver => {
-  return S => {
-    // Goes through all of the singletons that were provided and translates them into something the
-    // Desktool can understand
+  return (S: any) => {
+    // Define custom list items and structure
     const singletonItems = typeDefArray.map(typeDef => {
-      return S.listItem()
-        .title(typeDef.title || "")
-        .icon(typeDef.icon)
-        .child(
-          S.editor()
-            .id(typeDef.name)
-            .schemaType(typeDef.name)
-            .documentId(typeDef.name)
-            .views([
-              // Default form view
-              S.view.form()
-            ])
-        );
+      return {
+        title: typeDef.title || "",
+        icon: typeDef.icon,
+        child: {
+          id: typeDef.name,
+          schemaType: typeDef.name,
+          documentId: typeDef.name,
+          views: [
+            // Default form view
+            { type: "form" }
+          ]
+        }
+      };
     });
 
     // The default root list items (except custom ones)
@@ -73,9 +78,10 @@ export const pageStructure = (
         )
     );
 
-    return S.list()
-      .title("Content")
-      .items([...singletonItems, S.divider(), ...defaultListItems]);
+    return {
+      title: "Content",
+      items: [...singletonItems, { type: "divider" }, ...defaultListItems]
+    };
   };
 };
 
