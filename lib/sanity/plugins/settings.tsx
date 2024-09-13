@@ -28,6 +28,7 @@ export const singletonPlugin = (types: string[]) => {
         if (types.includes(schemaType)) {
           return prev.filter(
             ({ action }) =>
+              action !== undefined && // Ensure action is defined
               !["unpublish", "delete", "duplicate"].includes(action)
           );
         }
@@ -68,5 +69,4 @@ export const pageStructure = (
     return S.list().title("Content").items([...singletonItems, S.divider(), ...defaultListItems]);
   };
 };
-
 
