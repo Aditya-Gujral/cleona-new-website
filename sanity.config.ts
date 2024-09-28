@@ -29,7 +29,6 @@ export default defineConfig({
   plugins: [
     deskTool({
       structure: pageStructure as any, // Ensure correct type casting if necessary
-      structure: pageStructure as any, // Adjusted type casting
       // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
     singletonPlugin(['settings']),
