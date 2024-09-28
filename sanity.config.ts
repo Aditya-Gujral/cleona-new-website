@@ -16,6 +16,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 import { table } from '@sanity/table';
 import { codeInput } from '@sanity/code-input';
 
+// Ensure the document types are correctly defined
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ['post'];
 console.log(projectId);
 
@@ -28,17 +29,28 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: pageStructure as any, // Adjusted type casting
-      // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
+      structure: pageStructure as any, // Type casting can be adjusted
     }),
-    singletonPlugin(['settings']),
+    singletonPlugin({
+      name: 'settings',
+      document: {
+        newDocumentOptions: (prev, { creationContext }) => {
+          // Cast prev to the expected type if necessary
+          return prev as TemplateItem[]; // Adjust based on your document types
+        },
+        actions: (prev, { schemaType }) => {
+          // Return the previous actions or modify as needed
+          return prev;
+        },
+      },
+    }),
     visionTool(),
     unsplashImageAsset(),
     table(),
-    codeInput()
+    codeInput(),
   ],
 
   schema: {
-    types: schemaTypes
-  }
+    types: schemaTypes,
+  },
 });
