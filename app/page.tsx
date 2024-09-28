@@ -26,19 +26,10 @@ export default function Page() {
     textAlign: 'left' as const,
   };
 
-  const subHeadingStyle = {
-    fontSize: '3.5em',
-    fontWeight: 'bold',
-    margin: '0 1em',
-    textAlign: 'left' as const,
-  };
-
   return (
     <div style={{ textAlign: 'center' as const, fontFamily: 'Arial, sans-serif' }}>
-      <div><Header /></div>
-      <div>
-        <VideoPlayer videoSrc={videoUrl} />
-      </div>
+      <Header />
+      <VideoPlayer videoSrc={videoUrl} />
 
       <h2 style={{ fontSize: '5em', fontWeight: 'bold', color: '#007073', margin: '2em 0 0 0' }}>
         The AI platform for <br /> care operations
@@ -213,24 +204,21 @@ export default function Page() {
       <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em 0 0 1em', color: '#007073', textAlign: 'left' as const }}>
         Setup
       </h2>
-      <h3 style={{ fontSize: '1.5em', margin: '0 1em', color: '#007073', textAlign: 'left' as const }}>
-        Integrates with your existing systems
+      <h3 style={{ fontSize: '1.5em', margin: '0 0 0 1em', color: '#007073', textAlign: 'left' as const }}>
+        Get up and running quickly with an intuitive setup process.
       </h3>
-      <p style={sectionStyle}>
-        Reduce the burden on your teams. Our solution integrates with your existing systems and can be set up quickly.
+      <p style={{ fontSize: '2em', margin: '0 1em', color: '#a6a6a6', textAlign: 'left' as const }}>
+        Give us access to your EHR or website, and we’ll work with you to define your unique patient journeys.
       </p>
-      <Image
-        src="/img/Integration.png"
-        alt="Integration screen"
-        width={500}
-        height={500}
-        style={{ display: 'block', margin: '1em auto', width: '80%' }}
-      />
+      <h2 style={{ fontSize: '2.8em', fontWeight: 'bold', margin: '4em 0 0 1em', color: '#007073', textAlign: 'left' as const }}>
+        Data security
+      </h2>
+      <p style={{ fontSize: '2em', margin: '0 1em', color: '#a6a6a6', textAlign: 'left' as const }}>
+        We are HIPAA compliant and ensure that your patient data is safe.
+      </p>
 
       <Footer />
     </div>
   );
 }
 
-  );
-}
