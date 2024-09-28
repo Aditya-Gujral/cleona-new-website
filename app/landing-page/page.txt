@@ -1,0 +1,261 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable import/no-anonymous-default-export */
+
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import VideoPlayer from '@/components/VideoPlayer';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import styles from './Landing.module.css'; // Import the CSS module
+
+export default function Page() {
+  const videoUrl = "https://cleona-video.s3.amazonaws.com/CLEONA+Vid.mp4";
+
+  return (
+    <div className={styles.container}>
+      <Header />
+      <VideoPlayer videoSrc={videoUrl} />
+
+      <h2 className={styles.title}>
+        The AI platform for <br /> care operations
+      </h2>
+      <p className={styles.subtitle}>
+        Hyper-personalize the patient experience, automate processes<br /> and empower your team
+      </p>
+
+      <h2 className={styles.sectionTitle}>
+        CLEONA Assistant
+      </h2>
+      <p className={styles.sectionSubtitle}>
+        Conversational AI to streamline patient engagement
+      </p>
+
+      <Image
+        src="/img/Reproductive Assistant.gif"
+        alt="Picture of the reproductive assistant"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h3 className={styles.expandCapabilities}>
+        Expand your capabilities
+      </h3>
+      <p className={styles.expandText}>
+        Powers personalized patient engagement across channels, including <br /> web app, patient portal and your website.
+      </p>
+      <ul className={styles.benefitsList}>
+        <li className={styles.benefitItem}>
+          <Image
+            src="/img/tickmark.png"
+            alt="Tick mark"
+            width={50}
+            height={50}
+            className={styles.tickmark}
+          />
+          <h4 className={styles.benefitTitle}>
+            Engage and keep <br /> more <br /> patients
+          </h4>
+          <p className={styles.benefitDescription}>
+            Remove access barriers by <br />​providing a 24/7 self-serve <br />​experience
+          </p>
+        </li>
+        <li className={styles.benefitItem}>
+          <Image
+            src="/img/tickmark.png"
+            alt="Tick mark"
+            width={50}
+            height={50}
+            className={styles.tickmark}
+          />
+          <h4 className={styles.benefitTitle}>
+            Reduce <br />resource <br /> costs
+          </h4>
+          <p className={styles.benefitDescription}>
+            Deflect calls from the <br /> contact center.
+          </p>
+        </li>
+        <li className={styles.benefitItem}>
+          <Image
+            src="/img/tickmark.png"
+            alt="Tick mark"
+            width={50}
+            height={50}
+            className={styles.tickmark}
+          />
+          <h4 className={styles.benefitTitle}>
+            Automate <br /> manual <br />work
+          </h4>
+          <p className={styles.benefitDescription}>
+            Eliminate endless back-and-<br />forth phone calls for patients <br /> and staff.
+          </p>
+        </li>
+      </ul>
+
+      <h2 className={styles.sectionTitle}>
+        Patient navigation
+      </h2>
+      <p className={styles.sectionText}>
+        Help patients navigate services using data from your website, EHR, call scripts and more.
+      </p>
+      <Image
+        src="/img/Patient Navigation.png"
+        alt="Patient navigation screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.sectionTitle}>
+        Provider Search
+      </h2>
+      <p className={styles.sectionText}>
+        Connect patients to the care they need without phone calls.
+      </p>
+      <Image
+        src="/img/Provider Search.png"
+        alt="Provider Search screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.sectionTitle}>
+        Real-time responses
+      </h2>
+      <p className={styles.sectionText}>
+        Hyper personalized conversations decrease patients' reliance on Google, Reddit, and TikTok with immediate information and resources.
+      </p>
+      <Image
+        src="/img/Real Time Responses.png"
+        alt="Real Time Responses screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.sectionTitle}>
+        Scheduling
+      </h2>
+      <p className={styles.sectionText}>
+        Enable patients to schedule, reschedule, and cancel appointments 24/7.
+      </p>
+      <Image
+        src="/img/Reproductive Assistant.gif"
+        alt="Reproductive Assistant screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.sectionTitle}>
+        Payment collection
+      </h2>
+      <p className={styles.sectionText}>
+        Increase collections with secure, chat-based payments.
+      </p>
+
+      <h2 className={styles.sectionTitle}>
+        How it works
+      </h2>
+      <p className={styles.sectionText}>
+        The power of LLMs, the simplicity of conversation.
+      </p>
+      <Image
+        src="/img/pexels-yankrukov-4458358.jpg"
+        alt="Approach screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.sectionTitle}>
+        Approach
+      </h2>
+      <p className={styles.sectionText}>
+        Provide digital, concierge-level experiences for every patient—no matter their language.
+      </p>
+      <p className={styles.languageText}>
+        Personalize each interaction and communicate with patients in 150 different languages using text or voice.
+      </p>
+      <Image
+        src="/img/Approach.png"
+        alt="Approach screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.setupTitle}>
+        Setup
+      </h2>
+      <h3 className={styles.setupSubtitle}>
+        Configure in minutes and fully customize for your brand
+      </h3>
+      <p className={styles.setupText}>
+        Customize the look and feel of the Assistant and train it on your organization’s resources through a no-code interface.
+      </p>
+      <Image
+        src="/img/Set up.png"
+        alt="Set up screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.integrationTitle}>
+        Integrations
+      </h2>
+      <h3 className={styles.integrationSubtitle}>
+        Hyper-personalize patient experiences by connecting your EHR
+      </h3>
+      <p className={styles.integrationText}>
+        Empower patients to schedule appointments, pay bills, receive real-time information, and more without staff intervention.
+      </p>
+
+      <h2 className={styles.deploymentTitle}>
+        Deployment
+      </h2>
+      <h3 className={styles.deploymentSubtitle}>
+        Embed into your existing website, mobile app, and patient portal
+      </h3>
+      <p className={styles.deploymentText}>
+        Enhance your existing channels with conversational AI.
+      </p>
+      <Image
+        src="/img/Reproductive Assistant.gif"
+        alt="Deployment screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.analyticsTitle}>
+        Analytics
+      </h2>
+      <h3 className={styles.analyticsSubtitle}>
+        Uncover exactly what your patients are looking for
+      </h3>
+      <p className={styles.analyticsText}>
+        Build a deeper understanding of the most common questions and use cases for your website, mobile app, and portal.
+      </p>
+      <Image
+        src="/img/Analytics.png"
+        alt="Analytics screen"
+        width={500}
+        height={500}
+        className={styles.image}
+      />
+
+      <h2 className={styles.partnerTitle}>
+        How we partner
+      </h2>
+      <p className={styles.partnerText}>
+        CLEONA drives demonstrable ROI for partners through our proprietary solutions for realizing financial outcomes from AI investments.
+      </p>
+
+      <Footer />
+    </div>
+  );
+}

@@ -1,0 +1,153 @@
+.container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    font-size: 5em;
+    font-weight: bold;
+    color: #007073;
+    margin: 2em 0 0 0;
+  }
+  
+  .subtitle {
+    font-size: 2em;
+    margin: 0;
+    color: #a6a6a6;
+  }
+  
+  .sectionTitle {
+    font-size: 4em;
+    font-weight: bold;
+    color: #007073;
+    margin: 9em 0 0 0;
+  }
+  
+  .sectionSubtitle {
+    font-size: 2.5em;
+    margin: 0;
+    color: #007073;
+  }
+  
+  .expandCapabilities {
+    font-size: 3em;
+    font-weight: bold;
+    color: #007073;
+    margin: 4em 0 0 0;
+  }
+  
+  .expandText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+    margin: 1em 0 0 0;
+  }
+  
+  .benefitsList {
+    list-style: none;
+    padding: 0;
+    margin: 4em 0;
+  }
+  
+  .benefitItem {
+    display: inline-block;
+    width: 30%;
+    margin: 0 1%;
+    text-align: left;
+  }
+  
+  .tickmark {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .benefitTitle {
+    font-size: 2em;
+    color: #007073;
+  }
+  
+  .benefitDescription {
+    font-size: 1.2em;
+    color: #7c7c7c;
+  }
+  
+  .sectionText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+    margin: 1em 0;
+  }
+  
+  .languageText {
+    font-size: 1.5em;
+    color: #007073;
+  }
+  
+  .setupTitle {
+    font-size: 3em;
+    color: #007073;
+  }
+  
+  .setupSubtitle {
+    font-size: 2.5em;
+    color: #007073;
+  }
+  
+  .setupText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+  }
+  
+  .integrationTitle {
+    font-size: 3em;
+    color: #007073;
+  }
+  
+  .integrationSubtitle {
+    font-size: 2.5em;
+    color: #007073;
+  }
+  
+  .integrationText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+  }
+  
+  .deploymentTitle {
+    font-size: 3em;
+    color: #007073;
+  }
+  
+  .deploymentSubtitle {
+    font-size: 2.5em;
+    color: #007073;
+  }
+  
+  .deploymentText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+  }
+  
+  .analyticsTitle {
+    font-size: 3em;
+    color: #007073;
+  }
+  
+  .analyticsSubtitle {
+    font-size: 2.5em;
+    color: #007073;
+  }
+  
+  .analyticsText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+  }
+  
+  .partnerTitle {
+    font-size: 3em;
+    color: #007073;
+  }
+  
+  .partnerText {
+    font-size: 1.5em;
+    color: #7c7c7c;
+  }
+  
