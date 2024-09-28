@@ -1,4 +1,4 @@
-import { type DocumentDefinition, type TemplateItem } from "sanity";
+import { type DocumentDefinition, type TemplateItem } from "sanity"; // Import necessary types
 import { type StructureResolver } from "sanity/desk";
 import { type InitialValueTemplateItem, type DocumentActionComponent } from "sanity";
 
@@ -9,21 +9,21 @@ export const singletonPlugin = (types: string[]) => {
     document: {
       // Hide 'Singletons (such as Settings)' from new document options
       newDocumentOptions: (
-        prev: InitialValueTemplateItem[], // Ensure this matches the expected type
+        prev: TemplateItem[], // Use TemplateItem for the input type
         { creationContext }: { creationContext: { type: string } }
-      ) => {
+      ): InitialValueTemplateItem[] => { // Specify return type
         if (creationContext.type === "global") {
           return prev.filter(
             templateItem => !types.includes(templateItem.templateId)
-          );
+          ) as InitialValueTemplateItem[]; // Cast to InitialValueTemplateItem[]
         }
-        return prev;
+        return prev as InitialValueTemplateItem[]; // Cast to InitialValueTemplateItem[]
       },
       // Removes the "duplicate" action on the Singletons (such as Home)
       actions: (
-        prev: DocumentActionComponent[], // Ensure this matches the expected type
+        prev: DocumentActionComponent[], // Use the correct type for prev
         { schemaType }: { schemaType: string }
-      ) => {
+      ): DocumentActionComponent[] => { // Specify return type
         if (types.includes(schemaType)) {
           return prev.filter(
             ({ action }) =>
@@ -31,7 +31,7 @@ export const singletonPlugin = (types: string[]) => {
               !["unpublish", "delete", "duplicate"].includes(action)
           );
         }
-        return prev;
+        return prev; // Return prev as is
       },
     },
   };
@@ -67,4 +67,3 @@ export const pageStructure = (
     return S.list().title("Content").items([...singletonItems, S.divider(), ...defaultListItems]);
   };
 };
-
