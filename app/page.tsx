@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Image from 'next/image';
-import VideoPlayer from '@/components/VideoPlayer';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import styles from './Landing.module.css'; // Import the CSS module
-=======
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-anonymous-default-export */
 
@@ -15,8 +7,6 @@ import Link from 'next/link'; // Corrected import path
 import VideoPlayer from '@/components/VideoPlayer';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-
->>>>>>> origin/main
 
 export default function Page() {
   const videoUrl = "https://cleona-video.s3.amazonaws.com/CLEONA+Vid.mp4";
@@ -35,7 +25,6 @@ export default function Page() {
     margin: '19em 0 1em 1em',
     textAlign: 'left' as const,
   };
-
 
   const subHeadingStyle = {
     fontSize: '3.5em',
@@ -221,87 +210,27 @@ export default function Page() {
         style={{ display: 'block', margin: '1em auto', width: '80%' }}
       />
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em 0 0 1em', color: '#007073' , textAlign: 'left' as const}}>
+      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em 0 0 1em', color: '#007073', textAlign: 'left' as const }}>
         Setup
       </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const }}>
-        Configure in minutes and fully customize for your brand
-     
-
+      <h3 style={{ fontSize: '1.5em', margin: '0 1em', color: '#007073', textAlign: 'left' as const }}>
+        Integrates with your existing systems
       </h3>
-      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' as const}}>
-        Customize the look and feel of the Assistant and train it on your organization’s resources through a no-code interface.
+      <p style={sectionStyle}>
+        Reduce the burden on your teams. Our solution integrates with your existing systems and can be set up quickly.
       </p>
       <Image
-        src="/img/Set up.png"
-        alt="Set up screen"
+        src="/img/Integration.png"
+        alt="Integration screen"
         width={500}
         height={500}
         style={{ display: 'block', margin: '1em auto', width: '80%' }}
       />
 
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left' as const}}>
-        Integrations
-      </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' }}>
-        Hyper-personalize patient experiences by connecting your EHR
-      </h3>
-      <p style={{ fontSize: '2.8em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' }}>
-        Empower patients to schedule appointments, pay bills, receive real-time information, and more without staff intervention.
-      </p>
-
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin:'5em  0 0 1em', color: '#007073' , textAlign: 'left' as const }}>
-        Deployment
-      </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const }}>
-        Embed into your existing website, mobile app, and patient portal
-      </h3>
-      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6', textAlign: 'left' as const }}>
-        Enhance your existing channels with conversational AI.
-      </p>
-      <Image
-        src="/img/Reproductive Assistant.gif"
-        alt="Deployment screen"
-        width={500}
-        height={500}
-        style={{ display: 'block', margin: 'auto', width: '80%' }}
-      />
-
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '5em  0 0 1em', color: '#007073' , textAlign: 'left' as const }}>
-        Analytics
-      </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0 1em', textAlign: 'left' as const}}>
-        Uncover exactly what your patients are looking for
-      </h3>
-      <p style={{ fontSize: '2.5em', margin: '0 1.5em', color: '#a6a6a6' , textAlign: 'left' as const}}>
-        Build a deeper understanding of the most common questions and use cases for your website, mobile app, and portal.
-      </p>
-      <Image
-        src="/img/Analytics.png"
-        alt="Analytics screen"
-        width={500}
-        height={500}
-        style={{ display: 'block', margin: '1em auto', width: '80%' }}
-      />
-      {/*<Link href="/insights"> <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '0', color: '#007073' }}>
-        Insights
-      </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0.5em 0' }}>
-        Learn how AI is being leveraged to reshape care
-      </h3></Link>
-      <h2 style={{ fontSize: '2em', fontWeight: 'bold', margin: '0', color: '#007073' }}>
-        Insights
-      </h2>
-      <h3 style={{ fontSize: '3em', fontWeight: 'bold', margin: '0.5em 0' }}>
-        Learn how AI is being leveraged to reshape care
-      </h3>*/}
-
-      <h2 style={{ fontSize: '5em', fontWeight: 'bold', color: '#007073' }}>How we partner</h2>
-      <p style={{ fontSize: '2em', margin: '1em 0' , color: '#007073'}}>CLEONA drives demonstrable ROI for partners through our proprietary solutions for realizing financial outcomes from AI investments.</p>
-
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
+  );
+}
+
   );
 }
