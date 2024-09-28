@@ -1,6 +1,5 @@
 /* Header.module.css */
 .header {
-<<<<<<< HEAD
   position: absolute; /* Allows the header to overlap other content */
   top: 0;
   left: 0;
@@ -54,81 +53,20 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .navList {
-      gap: 1em; /* Reduced gap on smaller screens */
-      flex-direction: column; /* Stack items vertically */
-      align-items: flex-start; /* Align items to the start */
+    gap: 1em; /* Reduced gap on smaller screens */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
   }
 
   .logo {
-      font-size: 1.2em; /* Smaller logo size */
+    font-size: 1.2em; /* Smaller logo size */
   }
 
   .navItem {
-      font-size: 0.9em;
-      padding: 0.4em 0.6em;
-      border: none; /* Ensure no border on items */
+    font-size: 0.9em;
+    padding: 0.4em 0.6em;
+    border: none; /* Ensure no border on items */
   }
 }
 
-=======
-    position: absolute; /* Allows the header to overlap other content */
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 2%; /* Responsive padding */
-    z-index: 10; /* Ensures the header stays above other elements like the video */
-  }
-  
-  .logo {
-    font-size: 3em; /* Relative font size */
-    font-weight: bold;
-    text-decoration: none;
-    color: #FFFFFF; /* Logo text color */
-    font-family: 'Arial', sans-serif; /* Define a font for the logo */
-  }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navList {
-    list-style: none;
-    display: flex;
-    gap: 2em; /* Use em for spacing */
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navItem {
-    text-decoration: none;
-    color: #FFFFFF; /* Nav link color */
-    font-size: 1.5em; /* Relative font size */
-    padding: 0.5em 0.75em; /* Responsive padding */
-    font-family: 'Arial', sans-serif; /* Define the font for nav items */
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .navItem:hover {
-    background-color: rgba(240, 240, 240, 0.8); /* Hover effect with transparency */
-    border-radius: 0.5em;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navList {
-      gap: 1em; /* Reduced gap on smaller screens */
-    }
-    .logo {
-      font-size: 1.2em; /* Smaller logo size */
-    }
-    .navItem {
-      font-size: 0.9em;
-      padding: 0.4em 0.6em;
-    }
-  }
->>>>>>> origin/main
   
