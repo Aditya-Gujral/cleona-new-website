@@ -59,53 +59,48 @@ export default function Page() {
       <p style={{ fontSize: '2em', margin: '1em 1em 0 0', color: '#a6a6a6' }}>
         Powers personalized patient engagement across channels, including <br /> web app, patient portal and your website.
       </p>
-      <ul style={{ display: 'flex', justifyContent: 'space-around', listStyleType: 'none', padding: '10em 0' }}>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
-          <Image
-            src="/img/tickmark.png"
-            alt="Tick mark"
-            width={50}
-            height={50}
-            style={{ display: 'block', margin: '0 auto', height: '5em', width: '5em' }}
-          />
-          <h4 style={{ fontSize: '3em', fontWeight: 'bold', margin: '2em 0' }}>
-            Engage and keep <br /> more <br /> patients
-          </h4>
-          <p style={{ fontSize: '2em', margin: '1em 0' }}>
-            Remove access barriers by <br />​providing a 24/7 self-serve <br />​experience
-          </p>
-        </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
-          <Image
-            src="/img/tickmark.png"
-            alt="Tick mark"
-            width={50}
-            height={50}
-            style={{ display: 'block', margin: '0 auto', height: '5em', width: '5em' }}
-          />
-          <h4 style={{ fontSize: '3em', fontWeight: 'bold', margin: '2em 0' }}>
-            Reduce <br />resource <br /> costs
-          </h4>
-          <p style={{ fontSize: '2em', margin: '1em 0' }}>
-            Deflect calls from the <br /> contact center.
-          </p>
-        </li>
-        <li style={{ fontSize: '1em', margin: '0.5em', textAlign: 'center' as const }}>
-          <Image
-            src="/img/tickmark.png"
-            alt="Tick mark"
-            width={50}
-            height={50}
-            style={{ display: 'block', margin: '0 auto', height: '5em', width: '5em' }}
-          />
-          <h4 style={{ fontSize: '3em', fontWeight: 'bold', margin: '2em 0' }}>
-            Automate <br /> manual <br />work
-          </h4>
-          <p style={{ fontSize: '2em', margin: '1em 0' }}>
-            Eliminate endless back-and-<br />forth phone calls for patients <br /> and staff.
-          </p>
-        </li>
-      </ul>
+      <ul style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '10em 0',
+          listStyleType: 'none'
+        }}>
+          {['Engage and keep more patients', 'Reduce resource costs', 'Automate manual work'].map((item, index) => (
+            <li key={index} style={{
+              margin: '1em 0',
+              textAlign: 'center',
+              fontSize: '1.5em',
+            }}>
+              <Image
+                src="/img/tickmark.png"
+                alt="Tick mark"
+                width={50}
+                height={50}
+                style={{
+                  display: 'block',
+                  margin: '0 auto',
+                  height: '5em',
+                  width: '5em'
+                }}
+              />
+              <h4 style={{
+                fontSize: '1.5em',
+                fontWeight: 'bold'
+              }}>
+                {item}
+              </h4>
+              <p style={{
+                fontSize: '1.2em',
+                margin: '0'
+              }}>
+                {index === 0 ? 'Remove access barriers by providing a 24/7 self-serve experience' :
+                  index === 1 ? 'Deflect calls from the contact center.' :
+                  'Eliminate endless back-and-forth phone calls for patients and staff.'}
+              </p>
+            </li>
+          ))}
+        </ul>
 
       <h2 style={headingStyle}>
         Patient navigation
