@@ -17,10 +17,7 @@ import { table } from '@sanity/table';
 import { codeInput } from '@sanity/code-input';
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ['post'];
-<<<<<<< HEAD
-=======
 console.log(projectId);
->>>>>>> origin/main
 
 export default defineConfig({
   name: 'default',
@@ -31,12 +28,8 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-<<<<<<< HEAD
-      structure: pageStructure as any, // Ensure correct type casting if necessary
-=======
       structure: pageStructure as any, // Adjusted type casting
       // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
->>>>>>> origin/main
     }),
     singletonPlugin(['settings']),
     visionTool(),
