@@ -8,7 +8,7 @@ import { pageStructure, singletonPlugin } from './lib/sanity/plugins/settings';
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 import { table } from '@sanity/table';
 import { codeInput } from '@sanity/code-input';
-import { InitialValueTemplateItem, DocumentActionComponent } from 'sanity'; // Import necessary types
+import { InitialValueTemplateItem, DocumentActionComponent, NewDocumentOptionsResolver } from 'sanity'; // Import necessary types
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ['post'];
 
@@ -26,13 +26,20 @@ export default defineConfig({
     singletonPlugin({
       name: 'settings',
       document: {
+        // Ensure return type is compatible with InitialValueTemplateItem
         newDocumentOptions: (prev: InitialValueTemplateItem[], { creationContext }) => {
-          // Return the expected type
-          return prev as InitialValueTemplateItem[];
+          // Map the previous options to include the required fields
+          const newOptions = prev.map(item => ({
+            ...item,
+            type: item.type || 'document',
+            id: item.id || 'settings',
+            schemaType: item.schemaType || 'settings',
+          }));
+          return newOptions;
         },
         actions: (prev: DocumentActionComponent[], { schemaType }) => {
-          // Return the expected type
-          return prev as DocumentActionComponent[];
+          // Simply return the previous actions
+          return prev;
         },
       },
     }),
@@ -46,4 +53,3 @@ export default defineConfig({
     types: schemaTypes,
   },
 });
-
