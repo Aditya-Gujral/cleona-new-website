@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // File: C:\Users\adity\OneDrive\Desktop\CleonaNew\cleona-new-website\app\about\page.tsx
+=======
+// File: C:\Users\adity\OneDrive\Desktop\NextJS\my-app\app\about\page.tsx
+>>>>>>> origin/main
 import * as entry from '../../../../app/about/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

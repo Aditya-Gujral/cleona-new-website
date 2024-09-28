@@ -1,5 +1,6 @@
 {
   "pages": {
+<<<<<<< HEAD
     "/_not-found/page": [
       "static/chunks/webpack-bb9cba5863a420e4.js",
       "static/chunks/fd9d1056-42441f306eea77fa.js",
@@ -150,6 +151,63 @@
       "static/chunks/main-app-4d9176ec8fdf79e8.js",
       "static/chunks/4030-a1d5a13fc9d80451.js",
       "static/chunks/app/insights/(website)/archive/page-5379cbc5d0866bf6.js"
+=======
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/about/page.css",
+      "static/chunks/app/about/page.js"
+    ],
+    "/about/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about/layout.js"
+    ],
+    "/landing-page/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/landing-page/page.css",
+      "static/chunks/app/landing-page/page.js"
+    ],
+    "/landing-page/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/landing-page/layout.js"
+    ],
+    "/insights/(website)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/insights/(website)/page.js"
+    ],
+    "/insights/(website)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/insights/(website)/layout.css",
+      "static/chunks/app/insights/(website)/layout.js"
+    ],
+    "/insights/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/insights/layout.css",
+      "static/chunks/app/insights/layout.js"
+    ],
+    "/insights/(website)/post/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/insights/(website)/post/[slug]/page.js"
+>>>>>>> origin/main
     ]
   }
 }

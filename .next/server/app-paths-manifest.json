@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
@@ -11,4 +12,11 @@
   "/insights/(website)/post/[slug]/page": "app/insights/(website)/post/[slug]/page.js",
   "/insights/(website)/about/page": "app/insights/(website)/about/page.js",
   "/insights/(website)/archive/page": "app/insights/(website)/archive/page.js"
+=======
+  "/page": "app/page.js",
+  "/landing-page/page": "app/landing-page/page.js",
+  "/about/page": "app/about/page.js",
+  "/insights/(website)/page": "app/insights/(website)/page.js",
+  "/insights/(website)/post/[slug]/page": "app/insights/(website)/post/[slug]/page.js"
+>>>>>>> origin/main
 }
