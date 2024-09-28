@@ -7,7 +7,6 @@ import {
   dataset,
   previewSecretId
 } from './lib/sanity/config';
-import settings from './lib/sanity/schemas/settings';
 import {
   pageStructure,
   singletonPlugin
@@ -34,11 +33,11 @@ export default defineConfig({
     singletonPlugin({
       name: 'settings',
       document: {
-        newDocumentOptions: (prev, { creationContext }) => {
-          // Cast prev to the expected type if necessary
-          return prev as TemplateItem[]; // Adjust based on your document types
+        newDocumentOptions: (prev: TemplateItem[], { creationContext }) => {
+          // Ensure 'prev' matches the expected type
+          return prev as TemplateItem[]; // Cast 'prev' correctly
         },
-        actions: (prev, { schemaType }) => {
+        actions: (prev: DocumentActionComponent[], { schemaType }) => {
           // Return the previous actions or modify as needed
           return prev;
         },
@@ -49,6 +48,11 @@ export default defineConfig({
     table(),
     codeInput(),
   ],
+
+  schema: {
+    types: schemaTypes,
+  },
+});
 
   schema: {
     types: schemaTypes,
