@@ -7,6 +7,7 @@ import {
   dataset,
   previewSecretId
 } from './lib/sanity/config';
+import settings from './lib/sanity/schemas/settings';
 import {
   pageStructure,
   singletonPlugin
@@ -15,7 +16,6 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
 import { table } from '@sanity/table';
 import { codeInput } from '@sanity/code-input';
 
-// Ensure the document types are correctly defined
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ['post'];
 console.log(projectId);
 
@@ -28,33 +28,28 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: pageStructure as any, // Type casting can be adjusted
+      structure: pageStructure as any, // Adjusted type casting
+      // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
     singletonPlugin({
       name: 'settings',
       document: {
-        newDocumentOptions: (prev: TemplateItem[], { creationContext }) => {
-          // Ensure 'prev' matches the expected type
-          return prev as TemplateItem[]; // Cast 'prev' correctly
+        newDocumentOptions: (prev: any[], { creationContext }) => {
+          // Adjust the return value as needed
+          return prev; // Modify as needed based on your requirements
         },
-        actions: (prev: DocumentActionComponent[], { schemaType }) => {
-          // Return the previous actions or modify as needed
-          return prev;
+        actions: (prev: any[], { schemaType }) => {
+          return prev; // Modify actions if needed
         },
       },
     }),
     visionTool(),
     unsplashImageAsset(),
     table(),
-    codeInput(),
+    codeInput()
   ],
 
   schema: {
-    types: schemaTypes,
-  },
-});
-
-  schema: {
-    types: schemaTypes,
-  },
+    types: schemaTypes
+  }
 });
