@@ -1,4 +1,4 @@
-import { type DocumentDefinition, type TemplateItem } from "sanity"; // Import necessary types
+import { type DocumentDefinition, type TemplateItem } from "sanity";
 import { type StructureResolver } from "sanity/desk";
 import { type InitialValueTemplateItem, type DocumentActionComponent } from "sanity";
 
@@ -9,7 +9,7 @@ export const singletonPlugin = (types: string[]) => {
     document: {
       // Hide 'Singletons (such as Settings)' from new document options
       newDocumentOptions: (
-        prev: InitialValueTemplateItem[], // Explicitly type prev
+        prev: InitialValueTemplateItem[], // Ensure this matches the expected type
         { creationContext }: { creationContext: { type: string } }
       ) => {
         if (creationContext.type === "global") {
@@ -21,7 +21,7 @@ export const singletonPlugin = (types: string[]) => {
       },
       // Removes the "duplicate" action on the Singletons (such as Home)
       actions: (
-        prev: DocumentActionComponent[], // Explicitly type prev
+        prev: DocumentActionComponent[], // Ensure this matches the expected type
         { schemaType }: { schemaType: string }
       ) => {
         if (types.includes(schemaType)) {
@@ -67,3 +67,4 @@ export const pageStructure = (
     return S.list().title("Content").items([...singletonItems, S.divider(), ...defaultListItems]);
   };
 };
+
