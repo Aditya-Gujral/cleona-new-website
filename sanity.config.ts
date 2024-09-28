@@ -34,12 +34,13 @@ export default defineConfig({
     singletonPlugin({
       name: 'settings',
       document: {
-        newDocumentOptions: (prev: any[], { creationContext }) => {
-          // Adjust the return value as needed
+        newDocumentOptions: (prev: { type: string; id: string; schemaType: string; }[], { creationContext }: { creationContext: { type: string; } }) => {
+          // You may need to adjust how you handle 'prev' here
           return prev; // Modify as needed based on your requirements
         },
-        actions: (prev: any[], { schemaType }) => {
-          return prev; // Modify actions if needed
+        actions: (prev: { name: string; schemaType: string; }[], { schemaType }: { schemaType: string; }) => {
+          // Modify actions if needed
+          return prev; 
         },
       },
     }),
@@ -53,3 +54,4 @@ export default defineConfig({
     types: schemaTypes
   }
 });
+
