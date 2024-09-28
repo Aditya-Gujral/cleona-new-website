@@ -17,7 +17,6 @@ import { table } from '@sanity/table';
 import { codeInput } from '@sanity/code-input';
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = ['post'];
-console.log(projectId);
 
 export default defineConfig({
   name: 'default',
@@ -28,22 +27,9 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: pageStructure as any, // Adjusted type casting
-      // defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
+      structure: pageStructure as any, // Ensure correct type casting if necessary
     }),
-    singletonPlugin({
-      name: 'settings',
-      document: {
-        newDocumentOptions: (prev: { type: string; id: string; schemaType: string; }[], { creationContext }: { creationContext: { type: string; } }) => {
-          // You may need to adjust how you handle 'prev' here
-          return prev; // Modify as needed based on your requirements
-        },
-        actions: (prev: { name: string; schemaType: string; }[], { schemaType }: { schemaType: string; }) => {
-          // Modify actions if needed
-          return prev; 
-        },
-      },
-    }),
+    singletonPlugin(['settings']),
     visionTool(),
     unsplashImageAsset(),
     table(),
